@@ -153,6 +153,535 @@ export default function Rules() {
       </section>
 
       <section>
+        <h2>Spatial prepositions (Przyimki miejsca)</h2>
+        <p>
+          Polish uses <strong>different prepositions and cases</strong> depending
+          on whether you're talking about going <strong>to</strong> a place,
+          being <strong>at</strong> a place, or coming <strong>from</strong> a
+          place. The same preposition (e.g. <em>na</em>, <em>w</em>,{" "}
+          <em>nad</em>) can take different cases for direction vs. location.
+        </p>
+
+        <table className="spatial-table">
+          <thead>
+            <tr>
+              <th></th>
+              <th>
+                Dokąd idziesz?
+                <br />
+                <span className="spatial-subhead">Where to? (direction)</span>
+              </th>
+              <th>
+                Gdzie jesteś?
+                <br />
+                <span className="spatial-subhead">Where? (location)</span>
+              </th>
+              <th>
+                Skąd wracasz?
+                <br />
+                <span className="spatial-subhead">Where from? (origin)</span>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td className="spatial-icon">🏫</td>
+              <td>
+                <strong>do</strong> + dopełniacz (gen)
+                <br />
+                <em>Idę do szkoły</em>
+              </td>
+              <td>
+                <strong>w</strong> + miejscownik (loc)
+                <br />
+                <em>Jestem w szkole</em>
+              </td>
+              <td>
+                <strong>z / ze</strong> + dopełniacz (gen)
+                <br />
+                <em>Wracam ze szkoły</em>
+              </td>
+            </tr>
+            <tr>
+              <td className="spatial-icon">🏟️</td>
+              <td>
+                <strong>na</strong> + biernik (acc)
+                <br />
+                <em>Idę na stadion</em>
+              </td>
+              <td>
+                <strong>na</strong> + miejscownik (loc)
+                <br />
+                <em>Jestem na stadionie</em>
+              </td>
+              <td>
+                <strong>z / ze</strong> + dopełniacz (gen)
+                <br />
+                <em>Wracam ze stadionu</em>
+              </td>
+            </tr>
+            <tr>
+              <td className="spatial-icon">🎬</td>
+              <td>
+                <strong>na</strong> + biernik (acc)
+                <br />
+                <em>Idę na film / koncert / obiad</em>
+              </td>
+              <td>
+                <strong>na</strong> + miejscownik (loc)
+                <br />
+                <em>Jestem na filmie / koncercie / obiedzie</em>
+              </td>
+              <td>
+                <strong>z</strong> + dopełniacz (gen)
+                <br />
+                <em>Wracam z filmu / koncertu / obiadu</em>
+              </td>
+            </tr>
+            <tr className="spatial-exception-row">
+              <td className="spatial-icon">⚠️</td>
+              <td colSpan={3} className="spatial-exceptions">
+                <strong>Exceptions (wyjątki):</strong> Many common places don't
+                follow the standard pattern. You just have to memorize which
+                preposition each place takes.
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3>Exceptions in detail</h3>
+
+        <table className="spatial-table exceptions-detail-table">
+          <thead>
+            <tr>
+              <th>Place</th>
+              <th>Dokąd? (to)</th>
+              <th>Gdzie? (at)</th>
+              <th>Skąd? (from)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <strong>ogród</strong>
+                <br />
+                garden
+              </td>
+              <td>
+                <em>
+                  <strong>do</strong> ogrodu
+                </em>{" "}
+                (gen)
+              </td>
+              <td>
+                <em>
+                  <strong>w</strong> ogrodzie
+                </em>{" "}
+                (loc)
+              </td>
+              <td>
+                <em>
+                  <strong>z</strong> ogrodu
+                </em>{" "}
+                (gen)
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <strong>park</strong>
+                <br />
+                park
+              </td>
+              <td>
+                <em>
+                  <strong>do</strong> parku
+                </em>{" "}
+                (gen)
+              </td>
+              <td>
+                <em>
+                  <strong>w</strong> parku
+                </em>{" "}
+                (loc)
+              </td>
+              <td>
+                <em>
+                  <strong>z</strong> parku
+                </em>{" "}
+                (gen)
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <strong>poczta</strong>
+                <br />
+                post office
+              </td>
+              <td>
+                <em>
+                  <strong>na</strong> pocztę
+                </em>{" "}
+                (acc)
+              </td>
+              <td>
+                <em>
+                  <strong>na</strong> poczcie
+                </em>{" "}
+                (loc)
+              </td>
+              <td>
+                <em>
+                  <strong>z</strong> poczty
+                </em>{" "}
+                (gen)
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <strong>dworzec</strong>
+                <br />
+                train station
+              </td>
+              <td>
+                <em>
+                  <strong>na</strong> dworzec
+                </em>{" "}
+                (acc)
+              </td>
+              <td>
+                <em>
+                  <strong>na</strong> dworcu
+                </em>{" "}
+                (loc)
+              </td>
+              <td>
+                <em>
+                  <strong>z</strong> dworca
+                </em>{" "}
+                (gen)
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <strong>lotnisko</strong>
+                <br />
+                airport
+              </td>
+              <td>
+                <em>
+                  <strong>na</strong> lotnisko
+                </em>{" "}
+                (acc)
+              </td>
+              <td>
+                <em>
+                  <strong>na</strong> lotnisku
+                </em>{" "}
+                (loc)
+              </td>
+              <td>
+                <em>
+                  <strong>z</strong> lotniska
+                </em>{" "}
+                (gen)
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <strong>uniwersytet</strong>
+                <br />
+                university
+              </td>
+              <td>
+                <em>
+                  <strong>na</strong> uniwersytet
+                </em>{" "}
+                (acc)
+              </td>
+              <td>
+                <em>
+                  <strong>na</strong> uniwersytecie
+                </em>{" "}
+                (loc)
+              </td>
+              <td>
+                <em>
+                  <strong>z</strong> uniwersytetu
+                </em>{" "}
+                (gen)
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <strong>basen</strong>
+                <br />
+                swimming pool
+              </td>
+              <td>
+                <em>
+                  <strong>na</strong> basen
+                </em>{" "}
+                (acc)
+              </td>
+              <td>
+                <em>
+                  <strong>na</strong> basenie
+                </em>{" "}
+                (loc)
+              </td>
+              <td>
+                <em>
+                  <strong>z</strong> basenu
+                </em>{" "}
+                (gen)
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <strong>plaża</strong>
+                <br />
+                beach
+              </td>
+              <td>
+                <em>
+                  <strong>na</strong> plażę
+                </em>{" "}
+                (acc)
+              </td>
+              <td>
+                <em>
+                  <strong>na</strong> plaży
+                </em>{" "}
+                (loc)
+              </td>
+              <td>
+                <em>
+                  <strong>z</strong> plaży
+                </em>{" "}
+                (gen)
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <strong>wieś</strong>
+                <br />
+                countryside
+              </td>
+              <td>
+                <em>
+                  <strong>na</strong> wieś
+                </em>{" "}
+                (acc)
+              </td>
+              <td>
+                <em>
+                  <strong>na</strong> wsi
+                </em>{" "}
+                (loc)
+              </td>
+              <td>
+                <em>
+                  <strong>ze</strong> wsi
+                </em>{" "}
+                (gen)
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <strong>rynek</strong>
+                <br />
+                market square
+              </td>
+              <td>
+                <em>
+                  <strong>na</strong> rynek
+                </em>{" "}
+                (acc)
+              </td>
+              <td>
+                <em>
+                  <strong>na</strong> rynku
+                </em>{" "}
+                (loc)
+              </td>
+              <td>
+                <em>
+                  <strong>z</strong> rynku
+                </em>{" "}
+                (gen)
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <strong>policja</strong>
+                <br />
+                police station
+              </td>
+              <td>
+                <em>
+                  <strong>na</strong> policję
+                </em>{" "}
+                (acc)
+              </td>
+              <td>
+                <em>
+                  <strong>na</strong> policji
+                </em>{" "}
+                (loc)
+              </td>
+              <td>
+                <em>
+                  <strong>z</strong> policji
+                </em>{" "}
+                (gen)
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <strong>kościół</strong>
+                <br />
+                church
+              </td>
+              <td>
+                <em>
+                  <strong>do</strong> kościoła
+                </em>{" "}
+                (gen)
+              </td>
+              <td>
+                <em>
+                  <strong>w</strong> kościele
+                </em>{" "}
+                (loc)
+              </td>
+              <td>
+                <em>
+                  <strong>z</strong> kościoła
+                </em>{" "}
+                (gen)
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <p className="spatial-tip">
+          <strong>Tip:</strong> Open outdoor areas, surfaces, events, and
+          institutions often use <strong>na</strong> (poczta, dworzec, lotnisko,
+          uniwersytet, basen, plaża, wieś, rynek, policja, stadion, koncert).
+          Enclosed buildings and natural spaces usually use{" "}
+          <strong>w</strong> / <strong>do</strong> (dom, szkoła, biuro, kościół,
+          ogród, park, las).
+        </p>
+
+        <h3>People, water, and mountains</h3>
+        <table className="spatial-table">
+          <thead>
+            <tr>
+              <th></th>
+              <th>
+                Dokąd? <span className="spatial-subhead">(to)</span>
+              </th>
+              <th>
+                Gdzie? <span className="spatial-subhead">(at)</span>
+              </th>
+              <th>
+                Skąd? <span className="spatial-subhead">(from)</span>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td className="spatial-icon">👨‍⚕️</td>
+              <td>
+                <strong>do</strong> + dopełniacz (gen)
+                <br />
+                <em>Idę do lekarza</em>
+              </td>
+              <td>
+                <strong>u</strong> + dopełniacz (gen)
+                <br />
+                <em>Jestem u lekarza</em>
+              </td>
+              <td>
+                <strong>od</strong> + dopełniacz (gen)
+                <br />
+                <em>Wracam od lekarza</em>
+              </td>
+            </tr>
+            <tr>
+              <td className="spatial-icon">🌊</td>
+              <td>
+                <strong>nad</strong> + biernik (acc)
+                <br />
+                <em>Jadę nad morze</em>
+              </td>
+              <td>
+                <strong>nad</strong> + narzędnik (inst)
+                <br />
+                <em>Jestem nad morzem</em>
+              </td>
+              <td>
+                <strong>znad</strong> + dopełniacz (gen)
+                <br />
+                <em>Wracam znad morza</em>
+              </td>
+            </tr>
+            <tr>
+              <td className="spatial-icon">⛰️</td>
+              <td>
+                <strong>w</strong> + biernik (acc)
+                <br />
+                <em>Idę w góry</em>
+              </td>
+              <td>
+                <strong>w</strong> + miejscownik (loc)
+                <br />
+                <em>Jestem w górach</em>
+              </td>
+              <td>
+                <strong>z</strong> + dopełniacz (gen)
+                <br />
+                <em>Wracam z gór</em>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3>Key insight: same preposition, different case</h3>
+        <ul>
+          <li>
+            <strong>na</strong> + accusative = <em>direction</em> (going onto/to
+            something) — <strong>na</strong> + locative = <em>location</em>{" "}
+            (being on/at something)
+          </li>
+          <li>
+            <strong>w</strong> + accusative = <em>direction</em> (going into
+            something) — <strong>w</strong> + locative = <em>location</em>{" "}
+            (being in something)
+          </li>
+          <li>
+            <strong>nad</strong> + accusative = <em>direction</em> (going
+            to/over) — <strong>nad</strong> + instrumental = <em>location</em>{" "}
+            (being by/over)
+          </li>
+        </ul>
+
+        <h3>&quot;From&quot; prepositions</h3>
+        <ul>
+          <li>
+            <strong>z / ze</strong> + genitive = from inside/off (ze szkoły, ze
+            stadionu, z filmu)
+          </li>
+          <li>
+            <strong>od</strong> + genitive = from a person (od lekarza, od mamy)
+          </li>
+          <li>
+            <strong>znad</strong> + genitive = from over/by water (znad morza)
+          </li>
+        </ul>
+      </section>
+
+      <section>
         <h2>Quick case triggers</h2>
         <ul>
           <li>

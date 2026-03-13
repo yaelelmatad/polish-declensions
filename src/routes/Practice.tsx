@@ -6,7 +6,9 @@ import { words } from "../data/words";
 import { sentences } from "../data/sentences";
 import { sentencesAdjectival } from "../data/sentencesAdjectival";
 import { adjectivalItems } from "../data/adjectivalItems";
-import { pickQuestion, getEligibleQuestions, getQuestionBucketKey } from "../lib/pickQuestion";
+import { getEligibleQuestions, getQuestionBucketKey } from "../lib/pickQuestion";
+import type { Question } from "../lib/pickQuestion";
+import { pickNextDue } from "../lib/srs";
 
 const allSentences = [...sentences, ...sentencesAdjectival];
 
@@ -38,9 +40,7 @@ export default function Practice() {
   const [settings, setSettings] = useState<FS>(defaultFilters);
   const [showEnglish, setShowEnglish] = useState(getInitialShowEnglish);
   const [optionsOpen, setOptionsOpen] = useState(false);
-  const [question, setQuestion] = useState<ReturnType<typeof pickQuestion>>(
-    null
-  );
+  const [question, setQuestion] = useState<Question | null>(null);
   const [noEligible, setNoEligible] = useState(false);
 
   const toggleShowEnglish = () => {
@@ -64,9 +64,33 @@ export default function Practice() {
       setNoEligible(true);
       return;
     }
-    const lastKey = question ? getQuestionBucketKey(question) : null;
-    const q = pickQuestion(allSentences, wordMap, adjectivalMap, settings, lastKey);
-    setQuestion(q);
+
+    const idMap = new Map<string, Question>();
+    for (const q of eligible) idMap.set(q.sentence.id, q);
+
+    const dueId = pickNextDue("declension", [...idMap.keys()]);
+    let picked: Question | null = null;
+
+    if (dueId) {
+      picked = idMap.get(dueId) ?? null;
+    }
+
+    if (!picked) {
+      const arr = [...eligible];
+      for (let i = arr.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [arr[i], arr[j]] = [arr[j], arr[i]];
+      }
+      const lastKey = question ? getQuestionBucketKey(question) : null;
+      if (lastKey && arr.length > 1) {
+        const diff = arr.filter((q) => getQuestionBucketKey(q) !== lastKey);
+        picked = diff.length > 0 ? diff[0] : arr[0];
+      } else {
+        picked = arr[0];
+      }
+    }
+
+    setQuestion(picked);
   };
 
   return (

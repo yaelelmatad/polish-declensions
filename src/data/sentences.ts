@@ -737,4 +737,144 @@ export const sentences: Sentence[] = [
   { id: "s620", wordId: "brat", case: "nom", number: "plural", template: `${BLANK} pracują.`, hintExplanation: "Nominative plural virile." },
   { id: "s621", wordId: "maz", case: "nom", number: "plural", template: `${BLANK} wrócili.`, hintExplanation: "Nominative plural virile." },
   { id: "s622", wordId: "mama", case: "nom", number: "plural", template: `${BLANK} gotują.`, hintExplanation: "Nominative plural." },
+
+  // ========================================================================
+  // SPATIAL PREPOSITIONS — direction TO / location AT / coming FROM
+  // ========================================================================
+
+  // --- Pattern 1: do + gen (direction) → w + loc (location) → z/ze + gen (from) ---
+
+  // szkoła (school)
+  { id: "sp1", wordId: "szkola", case: "gen", number: "singular", template: `Idę do ${BLANK}.`, hintExplanation: "Direction TO: 'do' + genitive (to school)." },
+  { id: "sp2", wordId: "szkola", case: "loc", number: "singular", template: `Jestem w ${BLANK}.`, hintExplanation: "Location AT: 'w' + locative (at school)." },
+  { id: "sp3", wordId: "szkola", case: "gen", number: "singular", template: `Wracam ze ${BLANK}.`, hintExplanation: "Coming FROM: 'z/ze' + genitive (from school)." },
+
+  // dom (house/home)
+  { id: "sp4", wordId: "dom", case: "gen", number: "singular", template: `Idę do ${BLANK}.`, hintExplanation: "Direction TO: 'do' + genitive (going home)." },
+  { id: "sp5", wordId: "dom", case: "loc", number: "singular", template: `Jestem w ${BLANK}.`, hintExplanation: "Location AT: 'w' + locative (at home)." },
+  { id: "sp6", wordId: "dom", case: "gen", number: "singular", template: `Wracam z ${BLANK}.`, hintExplanation: "Coming FROM: 'z' + genitive (from home)." },
+
+  // praca (work)
+  { id: "sp7", wordId: "praca", case: "gen", number: "singular", template: `Jadę do ${BLANK}.`, hintExplanation: "Direction TO: 'do' + genitive (to work)." },
+  { id: "sp8", wordId: "praca", case: "loc", number: "singular", template: `Jestem w ${BLANK}.`, hintExplanation: "Location AT: 'w' + locative (at work)." },
+  { id: "sp9", wordId: "praca", case: "gen", number: "singular", template: `Wracam z ${BLANK}.`, hintExplanation: "Coming FROM: 'z' + genitive (from work)." },
+
+  // miasto (city)
+  { id: "sp10", wordId: "miasto", case: "gen", number: "singular", template: `Jadę do ${BLANK}.`, hintExplanation: "Direction TO: 'do' + genitive (to the city)." },
+  { id: "sp11", wordId: "miasto", case: "loc", number: "singular", template: `Mieszkam w ${BLANK}.`, hintExplanation: "Location AT: 'w' + locative (in the city)." },
+  { id: "sp12", wordId: "miasto", case: "gen", number: "singular", template: `Wracam z ${BLANK}.`, hintExplanation: "Coming FROM: 'z' + genitive (from the city)." },
+
+  // biuro (office)
+  { id: "sp13", wordId: "biuro", case: "gen", number: "singular", template: `Idę do ${BLANK}.`, hintExplanation: "Direction TO: 'do' + genitive (to the office)." },
+  { id: "sp14", wordId: "biuro", case: "loc", number: "singular", template: `Pracuję w ${BLANK}.`, hintExplanation: "Location AT: 'w' + locative (in the office)." },
+  { id: "sp15", wordId: "biuro", case: "gen", number: "singular", template: `Wracam z ${BLANK}.`, hintExplanation: "Coming FROM: 'z' + genitive (from the office)." },
+
+  // ogród (garden) — exception: do + gen direction, but w + loc location
+  { id: "sp16", wordId: "ogrod", case: "gen", number: "singular", template: `Idę do ${BLANK}.`, hintExplanation: "Direction TO: 'do' + genitive. Exception: 'do ogrodu' (not 'na ogród')." },
+  { id: "sp17", wordId: "ogrod", case: "loc", number: "singular", template: `Jestem w ${BLANK}.`, hintExplanation: "Location AT: 'w' + locative (in the garden)." },
+  { id: "sp18", wordId: "ogrod", case: "gen", number: "singular", template: `Wracam z ${BLANK}.`, hintExplanation: "Coming FROM: 'z' + genitive (from the garden)." },
+
+  // park — exception: do + gen direction, w + loc location
+  { id: "sp19", wordId: "park", case: "gen", number: "singular", template: `Idę do ${BLANK}.`, hintExplanation: "Direction TO: 'do' + genitive. Exception: 'do parku' (not 'na park')." },
+  { id: "sp20", wordId: "park", case: "loc", number: "singular", template: `Jestem w ${BLANK}.`, hintExplanation: "Location AT: 'w' + locative (in the park)." },
+  { id: "sp21", wordId: "park", case: "gen", number: "singular", template: `Wracam z ${BLANK}.`, hintExplanation: "Coming FROM: 'z' + genitive (from the park)." },
+
+  // --- Pattern 2: na + acc (direction) → na + loc (location) → z/ze + gen (from) ---
+
+  // stadion (stadium)
+  { id: "sp22", wordId: "stadion", case: "acc", number: "singular", template: `Idę na ${BLANK}.`, hintExplanation: "Direction TO: 'na' + accusative (to the stadium)." },
+  { id: "sp23", wordId: "stadion", case: "loc", number: "singular", template: `Jestem na ${BLANK}.`, hintExplanation: "Location AT: 'na' + locative (at the stadium)." },
+  { id: "sp24", wordId: "stadion", case: "gen", number: "singular", template: `Wracam ze ${BLANK}.`, hintExplanation: "Coming FROM: 'ze' + genitive (from the stadium)." },
+
+  // koncert (concert)
+  { id: "sp25", wordId: "koncert", case: "acc", number: "singular", template: `Idę na ${BLANK}.`, hintExplanation: "Direction TO: 'na' + accusative (to a concert)." },
+  { id: "sp26", wordId: "koncert", case: "loc", number: "singular", template: `Jestem na ${BLANK}.`, hintExplanation: "Location AT: 'na' + locative (at a concert)." },
+  { id: "sp27", wordId: "koncert", case: "gen", number: "singular", template: `Wracam z ${BLANK}.`, hintExplanation: "Coming FROM: 'z' + genitive (from a concert)." },
+
+  // film (movie)
+  { id: "sp28", wordId: "film", case: "acc", number: "singular", template: `Idę na ${BLANK}.`, hintExplanation: "Direction TO: 'na' + accusative (going to a movie)." },
+  { id: "sp29", wordId: "film", case: "loc", number: "singular", template: `Jestem na ${BLANK}.`, hintExplanation: "Location AT: 'na' + locative (at the movie)." },
+  { id: "sp30", wordId: "film", case: "gen", number: "singular", template: `Wracam z ${BLANK}.`, hintExplanation: "Coming FROM: 'z' + genitive (from the movie)." },
+
+  // obiad (lunch/dinner)
+  { id: "sp31", wordId: "obiad", case: "acc", number: "singular", template: `Idę na ${BLANK}.`, hintExplanation: "Direction TO: 'na' + accusative (going to lunch)." },
+  { id: "sp32", wordId: "obiad", case: "loc", number: "singular", template: `Jestem na ${BLANK}.`, hintExplanation: "Location AT: 'na' + locative (at lunch)." },
+  { id: "sp33", wordId: "obiad", case: "gen", number: "singular", template: `Wracam z ${BLANK}.`, hintExplanation: "Coming FROM: 'z' + genitive (from lunch)." },
+
+  // poczta (post office) — exception: na + acc direction, na + loc location
+  { id: "sp34", wordId: "poczta", case: "acc", number: "singular", template: `Idę na ${BLANK}.`, hintExplanation: "Direction TO: 'na' + accusative. Exception: 'na pocztę' (not 'do poczty')." },
+  { id: "sp35", wordId: "poczta", case: "loc", number: "singular", template: `Jestem na ${BLANK}.`, hintExplanation: "Location AT: 'na' + locative (at the post office)." },
+  { id: "sp36", wordId: "poczta", case: "gen", number: "singular", template: `Wracam z ${BLANK}.`, hintExplanation: "Coming FROM: 'z' + genitive (from the post office)." },
+
+  // dworzec (train station) — exception: na + acc direction, na + loc location
+  { id: "sp37", wordId: "dworzec", case: "acc", number: "singular", template: `Idę na ${BLANK}.`, hintExplanation: "Direction TO: 'na' + accusative. Exception: 'na dworzec'." },
+  { id: "sp38", wordId: "dworzec", case: "loc", number: "singular", template: `Jestem na ${BLANK}.`, hintExplanation: "Location AT: 'na' + locative (at the station)." },
+  { id: "sp39", wordId: "dworzec", case: "gen", number: "singular", template: `Wracam z ${BLANK}.`, hintExplanation: "Coming FROM: 'z' + genitive (from the station)." },
+
+  // lotnisko (airport) — exception: na + acc direction, na + loc location
+  { id: "sp40", wordId: "lotnisko", case: "acc", number: "singular", template: `Jadę na ${BLANK}.`, hintExplanation: "Direction TO: 'na' + accusative. Exception: 'na lotnisko'." },
+  { id: "sp41", wordId: "lotnisko", case: "loc", number: "singular", template: `Jestem na ${BLANK}.`, hintExplanation: "Location AT: 'na' + locative (at the airport)." },
+  { id: "sp42", wordId: "lotnisko", case: "gen", number: "singular", template: `Wracam z ${BLANK}.`, hintExplanation: "Coming FROM: 'z' + genitive (from the airport)." },
+
+  // --- Pattern 3: do + gen (direction) → u + gen (location) → od + gen (from) — people ---
+
+  // lekarz (doctor)
+  { id: "sp43", wordId: "lekarz", case: "gen", number: "singular", template: `Idę do ${BLANK}.`, hintExplanation: "Direction TO (person): 'do' + genitive (to the doctor)." },
+  { id: "sp44", wordId: "lekarz", case: "gen", number: "singular", template: `Jestem u ${BLANK}.`, hintExplanation: "Location AT (person): 'u' + genitive (at the doctor's). People use 'u' not 'w'." },
+  { id: "sp45", wordId: "lekarz", case: "gen", number: "singular", template: `Wracam od ${BLANK}.`, hintExplanation: "Coming FROM (person): 'od' + genitive (from the doctor)." },
+
+  // mama (mum)
+  { id: "sp46", wordId: "mama", case: "gen", number: "singular", template: `Jadę do ${BLANK}.`, hintExplanation: "Direction TO (person): 'do' + genitive (to mum's place)." },
+  { id: "sp47", wordId: "mama", case: "gen", number: "singular", template: `Jestem u ${BLANK}.`, hintExplanation: "Location AT (person): 'u' + genitive (at mum's). For people, use 'u' not 'w'." },
+  { id: "sp48", wordId: "mama", case: "gen", number: "singular", template: `Wracam od ${BLANK}.`, hintExplanation: "Coming FROM (person): 'od' + genitive (from mum's)." },
+
+  // brat (brother)
+  { id: "sp49", wordId: "brat", case: "gen", number: "singular", template: `Idę do ${BLANK}.`, hintExplanation: "Direction TO (person): 'do' + genitive (to brother's)." },
+  { id: "sp50", wordId: "brat", case: "gen", number: "singular", template: `Jestem u ${BLANK}.`, hintExplanation: "Location AT (person): 'u' + genitive (at brother's place)." },
+  { id: "sp51", wordId: "brat", case: "gen", number: "singular", template: `Wracam od ${BLANK}.`, hintExplanation: "Coming FROM (person): 'od' + genitive (from brother's)." },
+
+  // siostra (sister)
+  { id: "sp52", wordId: "siostra", case: "gen", number: "singular", template: `Jadę do ${BLANK}.`, hintExplanation: "Direction TO (person): 'do' + genitive (to sister's)." },
+  { id: "sp53", wordId: "siostra", case: "gen", number: "singular", template: `Jestem u ${BLANK}.`, hintExplanation: "Location AT (person): 'u' + genitive (at sister's place)." },
+  { id: "sp54", wordId: "siostra", case: "gen", number: "singular", template: `Wracam od ${BLANK}.`, hintExplanation: "Coming FROM (person): 'od' + genitive (from sister's)." },
+
+  // przyjaciel (friend)
+  { id: "sp55", wordId: "przyjaciel", case: "gen", number: "singular", template: `Idę do ${BLANK}.`, hintExplanation: "Direction TO (person): 'do' + genitive (to a friend's)." },
+  { id: "sp56", wordId: "przyjaciel", case: "gen", number: "singular", template: `Jestem u ${BLANK}.`, hintExplanation: "Location AT (person): 'u' + genitive (at a friend's place)." },
+  { id: "sp57", wordId: "przyjaciel", case: "gen", number: "singular", template: `Wracam od ${BLANK}.`, hintExplanation: "Coming FROM (person): 'od' + genitive (from a friend's)." },
+
+  // --- Pattern 4: nad + acc (direction) → nad + inst (location) → znad + gen (from) ---
+
+  // morze (sea)
+  { id: "sp58", wordId: "morze", case: "acc", number: "singular", template: `Jadę nad ${BLANK}.`, hintExplanation: "Direction TO: 'nad' + accusative (going to the sea). 'Nad' = direction with acc, location with inst." },
+  { id: "sp59", wordId: "morze", case: "inst", number: "singular", template: `Jestem nad ${BLANK}.`, hintExplanation: "Location AT: 'nad' + instrumental (by the sea). 'Nad' + inst = location." },
+  { id: "sp60", wordId: "morze", case: "gen", number: "singular", template: `Wracam znad ${BLANK}.`, hintExplanation: "Coming FROM: 'znad' + genitive (from the sea). 'Znad' always takes genitive." },
+
+  // --- Additional spatial sentences with varied verbs ---
+
+  // "Chodzę do" / "Chodzę na" patterns
+  { id: "sp61", wordId: "szkola", case: "gen", number: "singular", template: `Codziennie chodzę do ${BLANK}.`, hintExplanation: "Direction TO (habitual): 'do' + genitive (I go to school every day)." },
+  { id: "sp62", wordId: "koncert", case: "acc", number: "singular", template: `W sobotę idziemy na ${BLANK}.`, hintExplanation: "Direction TO: 'na' + accusative (going to a concert on Saturday)." },
+  { id: "sp63", wordId: "film", case: "acc", number: "singular", template: `Zapraszam cię na ${BLANK}.`, hintExplanation: "Direction TO: 'na' + accusative (inviting you to a movie)." },
+  { id: "sp64", wordId: "stadion", case: "loc", number: "singular", template: `Mecz jest na ${BLANK}.`, hintExplanation: "Location AT: 'na' + locative (the game is at the stadium)." },
+  { id: "sp65", wordId: "lotnisko", case: "acc", number: "singular", template: `Taksówka jedzie na ${BLANK}.`, hintExplanation: "Direction TO: 'na' + accusative (the taxi is going to the airport)." },
+  { id: "sp66", wordId: "dworzec", case: "loc", number: "singular", template: `Pociąg czeka na ${BLANK}.`, hintExplanation: "Location AT: 'na' + locative (the train is waiting at the station)." },
+  { id: "sp67", wordId: "poczta", case: "acc", number: "singular", template: `Muszę iść na ${BLANK}.`, hintExplanation: "Direction TO: 'na' + accusative (I need to go to the post office)." },
+  { id: "sp68", wordId: "poczta", case: "gen", number: "singular", template: `Właśnie wracam z ${BLANK}.`, hintExplanation: "Coming FROM: 'z' + genitive (just coming back from the post office)." },
+  { id: "sp69", wordId: "dworzec", case: "gen", number: "singular", template: `Autobus jedzie z ${BLANK}.`, hintExplanation: "Coming FROM: 'z' + genitive (the bus is coming from the station)." },
+  { id: "sp70", wordId: "lotnisko", case: "loc", number: "singular", template: `Samolot jest na ${BLANK}.`, hintExplanation: "Location AT: 'na' + locative (the plane is at the airport)." },
+
+  // More "u" (at someone's) and "od" (from someone) sentences
+  { id: "sp71", wordId: "ojciec", case: "gen", number: "singular", template: `Jestem u ${BLANK}.`, hintExplanation: "Location AT (person): 'u' + genitive (at father's). For people, use 'u' not 'w'." },
+  { id: "sp72", wordId: "ojciec", case: "gen", number: "singular", template: `Wracam od ${BLANK}.`, hintExplanation: "Coming FROM (person): 'od' + genitive (from father's place)." },
+
+  // Mixed spatial — "do/z" for places you go into
+  { id: "sp73", wordId: "mieszkanie", case: "gen", number: "singular", template: `Idę do ${BLANK}.`, hintExplanation: "Direction TO: 'do' + genitive (to the apartment)." },
+  { id: "sp74", wordId: "mieszkanie", case: "loc", number: "singular", template: `Jestem w ${BLANK}.`, hintExplanation: "Location AT: 'w' + locative (in the apartment)." },
+  { id: "sp75", wordId: "mieszkanie", case: "gen", number: "singular", template: `Wracam z ${BLANK}.`, hintExplanation: "Coming FROM: 'z' + genitive (from the apartment)." },
+
+  // las (forest) — w + acc direction, w + loc location
+  { id: "sp76", wordId: "las", case: "acc", number: "singular", template: `Idę w ${BLANK}.`, hintExplanation: "Direction TO: 'w' + accusative (going into the forest)." },
+  { id: "sp77", wordId: "las", case: "loc", number: "singular", template: `Jestem w ${BLANK}.`, hintExplanation: "Location AT: 'w' + locative (in the forest)." },
+  { id: "sp78", wordId: "las", case: "gen", number: "singular", template: `Wracam z ${BLANK}.`, hintExplanation: "Coming FROM: 'z' + genitive (from the forest)." },
 ];

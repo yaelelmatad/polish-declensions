@@ -12,8 +12,8 @@ A React + TypeScript + Vite app for practicing Polish noun and adjective declens
 
 Users can send mistake reports by email (to reduce spam, a password is required):
 
-- **Email:** `Yael.elmatad@gmail.com`
-- **Password:** `qa`
+- **Email:** (redacted)
+- **Password:** (ask)
 
 After submitting an answer, a **"Report a mistake"** button appears in the feedback area. Clicking it opens a modal where the user enters the password and describes the nature of the mistake. On **"Send email"**, the app opens the user’s mail client with a pre-filled message that includes:
 
@@ -72,14 +72,35 @@ export default defineConfig([
 
 ## Deploy to GitHub Pages
 
-You can host the app for free on GitHub Pages:
+Your repo is **polish-declensions**. To get the app live:
 
-1. **Create a GitHub repo** and push your code (e.g. named `Polish-Declension`).
-2. **Install dependencies**: `npm install`
-3. **Deploy**: `npm run deploy:gh` (builds and pushes to the `gh-pages` branch)
-4. **Turn on Pages**: repo **Settings → Pages → Source** → deploy from branch **gh-pages**, root. The site will be at `https://<username>.github.io/Polish-Declension/`.
+### 1. Enable GitHub Pages (one-time)
 
-If your repo name is different, in `package.json` change `/Polish-Declension/` in the `build:gh` script to `/<your-repo-name>/`.
+1. Open **https://github.com/yaelelmatad/polish-declensions**
+2. Go to **Settings** → **Pages** (left sidebar).
+3. Under **Build and deployment**:
+   - **Source:** “Deploy from a branch”
+   - **Branch:** choose **gh-pages** (create it in step 2 if it doesn’t exist yet), folder **/ (root)**
+4. Click **Save**.
+
+### 2. Deploy the app
+
+From your project folder:
+
+```bash
+npm install
+npm run deploy:gh
+```
+
+This builds the app for GitHub Pages (base path `/polish-declensions/`) and pushes the built files to the **gh-pages** branch. The first run creates that branch; later runs update it.
+
+### 3. Wait and open
+
+After a minute or two, the site is at:
+
+**https://yaelelmatad.github.io/polish-declensions/**
+
+If you see a 404, wait a bit longer or confirm in **Settings → Pages** that the **gh-pages** branch is selected and the deployment finished.
 
 ---
 

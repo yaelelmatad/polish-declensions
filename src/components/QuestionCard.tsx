@@ -4,6 +4,8 @@ import { getExpectedForm } from "../lib/pickQuestion";
 import { getCaseDisplayName, CASE_RULE_SHORT, CASE_VERB_HINTS, WORD_TYPE_NAMES } from "../types";
 import { checkAnswer } from "../lib/diacritics";
 import { saveAttempt } from "../lib/progress";
+import { updateCard } from "../lib/srs";
+import ReportMistake from "./ReportMistake";
 
 const BLANK = "_____";
 
@@ -26,10 +28,6 @@ export default function QuestionCard({ question, onNext, showEnglish }: Props) {
   const [result, setResult] = useState<ReturnType<typeof checkAnswer> | null>(
     null
   );
-  const [reportOpen, setReportOpen] = useState(false);
-  const [reportPassword, setReportPassword] = useState("");
-  const [reportExplanation, setReportExplanation] = useState("");
-  const [reportError, setReportError] = useState<string | null>(null);
 
   const displayTemplate = sentence.template.replace(BLANK, "_____");
   const showInput = result === null;
@@ -193,10 +191,8 @@ export default function QuestionCard({ question, onNext, showEnglish }: Props) {
     setHintShown(false);
   }, [question.sentence.id, question.sentence.template]);
 
-  // Enter to go to next question when feedback is shown (and report modal is closed).
-  // Ignore Enter if it came from an input/textarea so the same keypress never does submit+next.
   useEffect(() => {
-    if (showInput || reportOpen) return;
+    if (showInput) return;
     const onKey = (e: KeyboardEvent) => {
       if (e.key !== "Enter") return;
       const tag = (e.target as Element)?.tagName;
@@ -206,7 +202,7 @@ export default function QuestionCard({ question, onNext, showEnglish }: Props) {
     };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
-  }, [showInput, reportOpen, onNext]);
+  }, [showInput, onNext]);
 
   const handleSubmit = () => {
     // Base expected form from the data
@@ -244,42 +240,7 @@ export default function QuestionCard({ question, onNext, showEnglish }: Props) {
       correct: r.correct,
       timestamp: Date.now(),
     });
-  };
-
-  const handleOpenReport = () => {
-    setReportOpen(true);
-    setReportPassword("");
-    setReportExplanation("");
-    setReportError(null);
-  };
-
-  const handleSendReport = () => {
-    if (reportPassword !== "qa") {
-      setReportError("Incorrect password.");
-      return;
-    }
-    if (!reportExplanation.trim()) {
-      setReportError("Please describe the nature of the mistake.");
-      return;
-    }
-
-    const subject = encodeURIComponent(
-      "Polish Declension app: mistake report"
-    );
-    const bodyLines = [
-      "Question:",
-      displayTemplate,
-      "",
-      "Expected answer:",
-      expected,
-      "",
-      "User explanation:",
-      reportExplanation.trim(),
-    ];
-    const body = encodeURIComponent(bodyLines.join("\n"));
-
-    window.location.href = `mailto:Yael.elmatad@gmail.com?subject=${subject}&body=${body}`;
-    setReportOpen(false);
+    updateCard("declension", sentence.id, r.correct);
   };
 
   return (
@@ -381,52 +342,11 @@ export default function QuestionCard({ question, onNext, showEnglish }: Props) {
               Next question
             </button>
             <span className="next-hint">(or press Enter)</span>
-            <button
-              type="button"
-              className="secondary-btn"
-              onClick={handleOpenReport}
-            >
-              Report a mistake
-            </button>
-          </div>
-        </div>
-      )}
-      {reportOpen && (
-        <div className="report-modal-backdrop">
-          <div className="report-modal">
-            <h3>Report a mistake</h3>
-            <p>To prevent spam, enter the QA password and describe the issue.</p>
-            <label>
-              Password
-              <input
-                type="password"
-                value={reportPassword}
-                onChange={(e) => setReportPassword(e.target.value)}
-              />
-            </label>
-            <label>
-              Describe the nature of the mistake
-              <textarea
-                value={reportExplanation}
-                onChange={(e) => setReportExplanation(e.target.value)}
-              />
-            </label>
-            {reportError && <p className="report-error">{reportError}</p>}
-            <div className="report-actions">
-              <button type="button" onClick={handleSendReport}>
-                Send email
-              </button>
-              <button
-                type="button"
-                className="secondary-btn"
-                onClick={() => setReportOpen(false)}
-              >
-                Cancel
-              </button>
-            </div>
-            <p className="report-note">
-              The email will include this question and the expected answer.
-            </p>
+            <ReportMistake
+              questionText={displayTemplate}
+              expectedAnswer={expected}
+              subjectPrefix="Polish Declension app: mistake report"
+            />
           </div>
         </div>
       )}
