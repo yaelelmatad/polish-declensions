@@ -45,6 +45,18 @@ export default function Home() {
             <button type="button">Practice motion verbs</button>
           </Link>
         </div>
+
+        <div className="home-card">
+          <h2>Verbal Nouns</h2>
+          <p>
+            Form verbal nouns (rzeczowniki odczasownikowe) from verbs —
+            e.g. czytać → czytanie — and change the object from accusative
+            to genitive: czytać książkę → czytanie książki.
+          </p>
+          <Link to="/verbal-nouns">
+            <button type="button">Practice verbal nouns</button>
+          </Link>
+        </div>
       </div>
 
       <div style={{ marginTop: "1.5rem" }}>

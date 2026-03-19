@@ -22,11 +22,13 @@ This file summarizes the project and past user requests so future agents can wor
 | Data (declension) | `src/data/words.ts`, `sentences.ts`, `adjectivalItems.ts`, `sentencesAdjectival.ts` |
 | Data (imperatives) | `src/data/imperativeVerbs.ts`, `src/data/imperativeSentences.ts` |
 | Data (motion verbs) | `src/data/motionSentences.ts` |
+| Data (verbal nouns) | `src/data/verbalNounData.ts` |
 | Types & filtering | `src/types.ts`, `src/lib/pickQuestion.ts` |
 | Declension practice | `src/routes/Practice.tsx`, `src/components/FilterSettings.tsx`, `src/components/QuestionCard.tsx` |
 | Imperative practice | `src/routes/ImperativePractice.tsx` |
 | Motion verb practice | `src/routes/MotionPractice.tsx` |
-| Progress tracking | `src/lib/progress.ts` (declension/imperative/motion buckets), `src/routes/Progress.tsx` |
+| Verbal noun practice | `src/routes/VerbalNounPractice.tsx` |
+| Progress tracking | `src/lib/progress.ts` (declension/imperative/motion/verbal-noun buckets), `src/routes/Progress.tsx` |
 | Spaced repetition | `src/lib/srs.ts` (SM-2 engine, per-question scheduling, deck stats) |
 | Report mistake | `src/components/ReportMistake.tsx` (shared modal, password `qa`, mailto) |
 | Rules | `src/routes/Rules.tsx` |
@@ -81,11 +83,13 @@ This file summarizes the project and past user requests so future agents can wor
 
 28. **Motion verbs practice page** — `/motion` route: practice choosing the right verb of motion (chodzić/jeździć/iść/jechać/pójść/pojechać) based on context (habitual, in-progress, completed/future) and transport (foot vs. vehicle) in present/past/future tense. Data in `src/data/motionSentences.ts` (50 sentences). Route: `src/routes/MotionPractice.tsx`. Collapsible reference table showing all six verbs. Color-coded context tags. Accepts alternate forms (e.g. masculine/feminine past).
 
-29. **Report mistake (shared component)** — `src/components/ReportMistake.tsx` is a shared modal used on all three practice pages (declension, imperatives, motion verbs). Password `qa`, mailto to `Yael.elmatad@gmail.com`. Takes `questionText`, `expectedAnswer`, and `subjectPrefix` as props. The old inline report code in `QuestionCard.tsx` was replaced with this component.
+29. **Report mistake (shared component)** — `src/components/ReportMistake.tsx` is a shared modal used on all four practice pages (declension, imperatives, motion verbs, verbal nouns). Password `qa`, mailto to `Yael.elmatad@gmail.com`. Takes `questionText`, `expectedAnswer`, and `subjectPrefix` as props. The old inline report code in `QuestionCard.tsx` was replaced with this component.
 
-30. **Spaced repetition (SRS)** — All three practice pages use an SM-2-based spaced repetition system (`src/lib/srs.ts`). Each question is a "card" with its own scheduling: easeFactor (starts 2.5, min 1.3), interval (minutes), nextReview (timestamp), repetitions (consecutive correct, resets on wrong). Learning steps: 1 min → 10 min → 1 day → 3 days, then interval *= easeFactor. Wrong answers reset to step 1 and decrease easeFactor by 0.2. Question picking priority: (1) most overdue cards, (2) new/unseen cards, (3) random fallback. Three separate decks in localStorage: `srs-declension`, `srs-imperative`, `srs-motion`. Progress page shows SRS stats per section: due now, due later today, new/unseen, mature (21+ day interval). "Clear all progress" also clears SRS decks.
+30. **Spaced repetition (SRS)** — All four practice pages use an SM-2-based spaced repetition system (`src/lib/srs.ts`). Each question is a "card" with its own scheduling: easeFactor (starts 2.5, min 1.3), interval (minutes), nextReview (timestamp), repetitions (consecutive correct, resets on wrong). Learning steps: 1 min → 10 min → 1 day → 3 days, then interval *= easeFactor. Wrong answers reset to step 1 and decrease easeFactor by 0.2. Question picking priority: (1) most overdue cards, (2) new/unseen cards, (3) random fallback. Four separate decks in localStorage: `srs-declension`, `srs-imperative`, `srs-motion`, `srs-verbal-noun`. Progress page shows SRS stats per section: due now, due later today, new/unseen, mature (21+ day interval). "Clear all progress" also clears SRS decks.
 
-31. **Progress page has three sections** — Declension (by case/gender/number/virile), Imperatives (by conjugation type and person), Motion Verbs (by context/transport/tense). Each section has an SRS stats bar and a bucket accuracy table. Rows under 70% with 5+ attempts are highlighted. Single "Clear all progress" button clears all three plus SRS data.
+31. **Progress page has four sections** — Declension (by case/gender/number/virile), Imperatives (by conjugation type and person), Motion Verbs (by context/transport/tense), Verbal Nouns (by verb and type). Each section has an SRS stats bar and a bucket accuracy table. Rows under 70% with 5+ attempts are highlighted. Single "Clear all progress" button clears all four plus SRS data.
+
+32. **Verbal noun practice page** — `/verbal-nouns` route: practice forming verbal nouns (rzeczowniki odczasownikowe) from verbs and converting accusative objects to genitive. Data in `src/data/verbalNounData.ts` (36 verbs with formation rules + 41 sentences). Route: `src/routes/VerbalNounPractice.tsx`. Shows verb infinitive, formation rule, and the phrase to convert. Two types of questions: (a) verbal noun only ("biegać → bieganie"), (b) verbal noun + object case change ("czytać książkę → czytanie książki"). Formation rules: -ać → -anie, -ować → -owanie, -ić/-yć → -enie, -eć → -enie, short verbs → -cie. Key grammar: acc objects become genitive with verbal nouns. Includes SRS, report mistake, progress tracking.
 
 ## Conventions
 
@@ -95,8 +99,9 @@ This file summarizes the project and past user requests so future agents can wor
 - **Morphology hints:** In `QuestionCard.tsx`, `morphologyHint` describes the nominative→target change and a one-line “Rule:” that explains why that ending (case role). Prefer specific patterns (feminine -a⇒-ę, las⇒lesie, gość⇒goście, stół⇒stole, etc.) over a generic fallback; use `CASE_WHY` only when no specific pattern matches.
 - **Imperative verbs:** Classified by present-tense conjugation pattern (`-am, -asz` | `-ę, -esz` | `-ę, -isz/-ysz` | `-em, -esz` | `irregular`). Each verb has `presentForms` (e.g. "czytam, czytasz") and imperative forms for ty/my/wy. Only use verbIds that exist in `imperativeVerbs.ts`.
 - **Motion verbs:** Sentences specify `context` (habitual | in-progress | completed | future), `transport` (foot | vehicle), `tense` (present | past | future), and `expected` form. `alternates` array for acceptable variants (e.g. masculine/feminine past).
-- **Progress:** Three independent tracking systems in `progress.ts`: declension (`polish-attempts`), imperative (`polish-imperative-attempts`), motion (`polish-motion-attempts`). Each stores an array of `{ id, correct, ts }` objects in localStorage.
-- **SRS:** Three decks in `srs.ts`: `srs-declension`, `srs-imperative`, `srs-motion`. Each deck is a `Record<string, SRSCard>` stored in localStorage. Cards are updated after every submit via `updateCard()`. Question picking via `pickNextDue()` returns the most overdue card, or a new card, or null.
+- **Verbal nouns:** Verbs in `verbalNounData.ts` have `verbalNoun` and `rule` fields. Sentences have `expected` (full phrase like "czytanie książki"), `originalPhrase` (what the user converts from), and optional `alternates`. Only use verbIds that exist in `verbalNounData.ts`.
+- **Progress:** Four independent tracking systems in `progress.ts`: declension (`polish-attempts`), imperative (`polish-imperative-attempts`), motion (`polish-motion-attempts`), verbal-noun (`polish-verbal-noun-attempts`). Each stores an array of attempt objects in localStorage.
+- **SRS:** Four decks in `srs.ts`: `srs-declension`, `srs-imperative`, `srs-motion`, `srs-verbal-noun`. Each deck is a `Record<string, SRSCard>` stored in localStorage. Cards are updated after every submit via `updateCard()`. Question picking via `pickNextDue()` returns the most overdue card, or a new card, or null.
 - **Report mistake:** All practice pages use `<ReportMistake>` from `src/components/ReportMistake.tsx`. Pass `questionText`, `expectedAnswer`, and `subjectPrefix` (e.g. "Declension", "Imperative", "Motion Verb").
 
 Use this file to stay aligned with project goals and prior decisions when implementing new features or fixing bugs.

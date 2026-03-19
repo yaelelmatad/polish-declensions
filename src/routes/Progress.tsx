@@ -10,6 +10,9 @@ import {
   loadMotionAttempts,
   aggregateMotionProgress,
   clearMotionAttempts,
+  loadVerbalNounAttempts,
+  aggregateVerbalNounProgress,
+  clearVerbalNounAttempts,
 } from "../lib/progress";
 import { getDeckStats, clearDeck } from "../lib/srs";
 import type { SRSStats } from "../lib/srs";
@@ -18,6 +21,7 @@ import { sentences } from "../data/sentences";
 import { sentencesAdjectival } from "../data/sentencesAdjectival";
 import { imperativeSentences } from "../data/imperativeSentences";
 import { motionSentences } from "../data/motionSentences";
+import { verbalNounSentences, verbalNounVerbs } from "../data/verbalNounData";
 
 const CONTEXT_LABELS: Record<string, string> = {
   habitual: "Habitual",
@@ -29,6 +33,8 @@ const CONTEXT_LABELS: Record<string, string> = {
 const declIds = [...sentences, ...sentencesAdjectival].map((s) => s.id);
 const impIds = imperativeSentences.map((s) => s.id);
 const motIds = motionSentences.map((s) => s.id);
+const vnIds = verbalNounSentences.map((s) => s.id);
+const vnVerbMap = new Map(verbalNounVerbs.map((v) => [v.id, v]));
 
 function SRSStatsBar({ stats }: { stats: SRSStats }) {
   return (
@@ -53,19 +59,22 @@ export default function Progress() {
   const [declAttempts, setDeclAttempts] = useState(loadAttempts());
   const [impAttempts, setImpAttempts] = useState(loadImperativeAttempts());
   const [motAttempts, setMotAttempts] = useState(loadMotionAttempts());
+  const [vnAttempts, setVnAttempts] = useState(loadVerbalNounAttempts());
   const [srsKey, setSrsKey] = useState(0);
 
   const declBuckets = aggregateProgress(declAttempts);
   const declNeeds = getNeedsPracticeBuckets(declBuckets);
   const impBuckets = aggregateImperativeProgress(impAttempts);
   const motBuckets = aggregateMotionProgress(motAttempts);
+  const vnBuckets = aggregateVerbalNounProgress(vnAttempts);
 
   const declSrs = getDeckStats("declension", declIds);
   const impSrs = getDeckStats("imperative", impIds);
   const motSrs = getDeckStats("motion", motIds);
-  void srsKey; // trigger re-read when decks are cleared
+  const vnSrs = getDeckStats("verbal-noun", vnIds);
+  void srsKey;
 
-  const totalAll = declAttempts.length + impAttempts.length + motAttempts.length;
+  const totalAll = declAttempts.length + impAttempts.length + motAttempts.length + vnAttempts.length;
 
   const handleClearAll = () => {
     if (
@@ -76,12 +85,15 @@ export default function Progress() {
       clearAttempts();
       clearImperativeAttempts();
       clearMotionAttempts();
+      clearVerbalNounAttempts();
       clearDeck("declension");
       clearDeck("imperative");
       clearDeck("motion");
+      clearDeck("verbal-noun");
       setDeclAttempts([]);
       setImpAttempts([]);
       setMotAttempts([]);
+      setVnAttempts([]);
       setSrsKey((k) => k + 1);
     }
   };
@@ -268,6 +280,53 @@ export default function Progress() {
                   </td>
                 </tr>
               ))}
+            </tbody>
+          </table>
+        )}
+      </section>
+
+      {/* ================================================================ */}
+      {/* VERBAL NOUNS */}
+      {/* ================================================================ */}
+      <section>
+        <h2>
+          Verbal Nouns{" "}
+          <span className="progress-count">({vnAttempts.length} attempts)</span>
+        </h2>
+        <SRSStatsBar stats={vnSrs} />
+        {vnAttempts.length === 0 ? (
+          <p className="progress-empty">No verbal noun attempts yet.</p>
+        ) : (
+          <table className="progress-table">
+            <thead>
+              <tr>
+                <th>Verb</th>
+                <th>Type</th>
+                <th>Accuracy</th>
+                <th>Count</th>
+              </tr>
+            </thead>
+            <tbody>
+              {vnBuckets.map((b) => {
+                const v = vnVerbMap.get(b.verbId);
+                return (
+                  <tr
+                    key={`${b.verbId}-${b.hasObject}`}
+                    className={
+                      b.total >= 5 && b.accuracy < 0.7
+                        ? "need-practice-row"
+                        : ""
+                    }
+                  >
+                    <td>{v ? v.infinitive : b.verbId}</td>
+                    <td>{b.hasObject ? "noun + object" : "noun only"}</td>
+                    <td>{Math.round(b.accuracy * 100)}%</td>
+                    <td>
+                      {b.correct}/{b.total}
+                    </td>
+                  </tr>
+                );
+              })}
             </tbody>
           </table>
         )}

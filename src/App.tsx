@@ -4,6 +4,7 @@ import Home from "./routes/Home";
 import Practice from "./routes/Practice";
 import ImperativePractice from "./routes/ImperativePractice";
 import MotionPractice from "./routes/MotionPractice";
+import VerbalNounPractice from "./routes/VerbalNounPractice";
 import Progress from "./routes/Progress";
 import Rules from "./routes/Rules";
 
@@ -16,6 +17,7 @@ function App() {
           <Link to="/practice">Declension</Link>
           <Link to="/imperatives">Imperatives</Link>
           <Link to="/motion">Motion Verbs</Link>
+          <Link to="/verbal-nouns">Verbal Nouns</Link>
           <Link to="/progress">Progress</Link>
           <Link to="/rules">Rules</Link>
         </nav>
@@ -25,6 +27,7 @@ function App() {
             <Route path="/practice" element={<Practice />} />
             <Route path="/imperatives" element={<ImperativePractice />} />
             <Route path="/motion" element={<MotionPractice />} />
+            <Route path="/verbal-nouns" element={<VerbalNounPractice />} />
             <Route path="/progress" element={<Progress />} />
             <Route path="/rules" element={<Rules />} />
           </Routes>

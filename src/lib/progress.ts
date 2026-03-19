@@ -148,6 +148,72 @@ export function aggregateImperativeProgress(
 }
 
 // ===========================================================================
+// Verbal noun progress
+// ===========================================================================
+export interface VerbalNounAttempt {
+  verbId: string;
+  hasObject: boolean;
+  correct: boolean;
+  timestamp: number;
+}
+
+export interface VerbalNounBucket {
+  verbId: string;
+  hasObject: boolean;
+  correct: number;
+  total: number;
+  accuracy: number;
+}
+
+const VN_STORAGE_KEY = "polish-verbal-noun-attempts";
+
+export function loadVerbalNounAttempts(): VerbalNounAttempt[] {
+  try {
+    const raw = localStorage.getItem(VN_STORAGE_KEY);
+    if (!raw) return [];
+    const parsed = JSON.parse(raw) as VerbalNounAttempt[];
+    return Array.isArray(parsed) ? parsed : [];
+  } catch {
+    return [];
+  }
+}
+
+export function clearVerbalNounAttempts(): void {
+  try { localStorage.removeItem(VN_STORAGE_KEY); } catch {}
+}
+
+export function saveVerbalNounAttempt(attempt: VerbalNounAttempt): void {
+  const attempts = loadVerbalNounAttempts();
+  attempts.push(attempt);
+  localStorage.setItem(VN_STORAGE_KEY, JSON.stringify(attempts));
+}
+
+export function aggregateVerbalNounProgress(
+  attempts: VerbalNounAttempt[]
+): VerbalNounBucket[] {
+  const map = new Map<string, { correct: number; total: number }>();
+  for (const a of attempts) {
+    const key = `${a.verbId}|${a.hasObject}`;
+    const cur = map.get(key) ?? { correct: 0, total: 0 };
+    cur.total += 1;
+    if (a.correct) cur.correct += 1;
+    map.set(key, cur);
+  }
+  const buckets: VerbalNounBucket[] = [];
+  for (const [key, { correct, total }] of map) {
+    const [verbId, hasObjStr] = key.split("|");
+    buckets.push({
+      verbId,
+      hasObject: hasObjStr === "true",
+      correct,
+      total,
+      accuracy: total > 0 ? correct / total : 0,
+    });
+  }
+  return buckets.sort((a, b) => a.accuracy - b.accuracy);
+}
+
+// ===========================================================================
 // Motion verbs progress
 // ===========================================================================
 export interface MotionAttempt {
