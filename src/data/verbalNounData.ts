@@ -61,6 +61,30 @@ export const verbalNounVerbs: VerbalNounVerb[] = [
   { id: "zmywac", infinitive: "zmywać", english: "to wash (dishes)", verbalNoun: "zmywanie", rule: "-ać → -anie" },
   { id: "kapac_sie", infinitive: "kąpać się", english: "to bathe", verbalNoun: "kąpanie się", rule: "-ać → -anie" },
 
+  // -ąć → -ęcie (irregular vowel change)
+  { id: "wziac", infinitive: "wziąć", english: "to take", verbalNoun: "wzięcie", rule: "-ąć → -ęcie (ą→ę)" },
+  { id: "zdjac", infinitive: "zdjąć", english: "to take off / remove", verbalNoun: "zdjęcie", rule: "-ąć → -ęcie (ą→ę)" },
+  { id: "przyjac", infinitive: "przyjąć", english: "to accept / receive", verbalNoun: "przyjęcie", rule: "-ąć → -ęcie (ą→ę)" },
+  { id: "pojac", infinitive: "pojąć", english: "to grasp / comprehend", verbalNoun: "pojęcie", rule: "-ąć → -ęcie (ą→ę)" },
+  { id: "zaczac", infinitive: "zacząć", english: "to begin", verbalNoun: "zaczęcie", rule: "-ąć → -ęcie (ą→ę)" },
+  { id: "ciac", infinitive: "ciąć", english: "to cut", verbalNoun: "cięcie", rule: "-ąć → -ęcie (ą→ę)" },
+
+  // common verbal nouns that double as everyday words
+  { id: "mieszkac", infinitive: "mieszkać", english: "to live (reside)", verbalNoun: "mieszkanie", rule: "-ać → -anie" },
+  { id: "spotkac", infinitive: "spotkać", english: "to meet", verbalNoun: "spotkanie", rule: "-ać → -anie" },
+  { id: "pytac", infinitive: "pytać", english: "to ask", verbalNoun: "pytanie", rule: "-ać → -anie" },
+  { id: "cwiczic", infinitive: "ćwiczyć", english: "to exercise / practice", verbalNoun: "ćwiczenie", rule: "-yć → -enie" },
+  { id: "marzyc", infinitive: "marzyć", english: "to dream", verbalNoun: "marzenie", rule: "-yć → -enie" },
+  { id: "znaczyc", infinitive: "znaczyć", english: "to mean", verbalNoun: "znaczenie", rule: "-yć → -enie" },
+  { id: "tlumaczyc", infinitive: "tłumaczyć", english: "to translate / explain", verbalNoun: "tłumaczenie", rule: "-yć → -enie" },
+  { id: "opowiadac", infinitive: "opowiadać", english: "to tell (a story)", verbalNoun: "opowiadanie", rule: "-ać → -anie" },
+  { id: "cierpiec", infinitive: "cierpieć", english: "to suffer", verbalNoun: "cierpienie", rule: "-eć → -enie" },
+  { id: "parkowac", infinitive: "parkować", english: "to park", verbalNoun: "parkowanie", rule: "-ować → -owanie" },
+  { id: "latac", infinitive: "latać", english: "to fly", verbalNoun: "latanie", rule: "-ać → -anie" },
+  { id: "badac", infinitive: "badać", english: "to research / examine", verbalNoun: "badanie", rule: "-ać → -anie" },
+  { id: "zachowac", infinitive: "zachować", english: "to behave / preserve", verbalNoun: "zachowanie", rule: "-ować → -owanie" },
+  { id: "wozic", infinitive: "wozić", english: "to transport / drive", verbalNoun: "wożenie", rule: "-ić → -enie (z→ż)" },
+
   // irregular / special
   { id: "jesc", infinitive: "jeść", english: "to eat", verbalNoun: "jedzenie", rule: "jeść → jedzenie (irregular stem)" },
 ];
@@ -191,6 +215,39 @@ export const verbalNounSentences: VerbalNounSentence[] = [
 
   // rysować
   { id: "vn60", verbId: "rysowac", template: `${V} ${N} to jej talent.`, english: "Drawing portraits is her talent.", expectedVerb: "rysowanie", expectedNoun: "portretów", originalPhrase: "rysować portrety (acc pl)", hint: "rysować → rysowanie; portrety (acc pl) → portretów (gen pl)." },
+
+  // -----------------------------------------------------------------------
+  // IRREGULAR: -ąć → -ęcie
+  // -----------------------------------------------------------------------
+  { id: "vn90", verbId: "wziac", template: `${V} ${N} było trudne.`, english: "Taking a loan was difficult.", expectedVerb: "wzięcie", expectedNoun: "kredytu", originalPhrase: "wziąć kredyt (acc sg)", hint: "wziąć → wzięcie (-ąć → -ęcie, vowel change ą→ę); kredyt (acc) → kredytu (gen)." },
+  { id: "vn91", verbId: "zdjac", template: `${V} to moje hobby.`, english: "Photography (taking photos) is my hobby.", expectedVerb: "zdjęcie", originalPhrase: "zdjąć", hint: "zdjąć → zdjęcie (-ąć → -ęcie). 'Zdjęcie' also means 'photograph' in everyday Polish!" },
+  { id: "vn92", verbId: "przyjac", template: `${V} ${N} odbyło się w sobotę.`, english: "Accepting the award took place on Saturday.", expectedVerb: "przyjęcie", expectedNoun: "nagrody", originalPhrase: "przyjąć nagrodę (acc sg)", hint: "przyjąć → przyjęcie (-ąć → -ęcie); nagrodę (acc) → nagrody (gen). 'Przyjęcie' also means 'party/reception'!" },
+  { id: "vn93", verbId: "pojac", template: `${V} ${N} zajęło mi chwilę.`, english: "Grasping the concept took me a moment.", expectedVerb: "pojęcie", expectedNoun: "tematu", originalPhrase: "pojąć temat (acc sg)", hint: "pojąć → pojęcie (-ąć → -ęcie); temat (acc) → tematu (gen). 'Pojęcie' also means 'concept/notion'!" },
+  { id: "vn94", verbId: "zaczac", template: `${V} ${N} jest najtrudniejsze.`, english: "Starting a new job is the hardest.", expectedVerb: "zaczęcie", expectedNoun: "nowej pracy", originalPhrase: "zacząć nową pracę (acc sg)", hint: "zacząć → zaczęcie (-ąć → -ęcie); nową pracę (acc) → nowej pracy (gen)." },
+  { id: "vn95", verbId: "ciac", template: `${V} ${N} wymaga precyzji.`, english: "Cutting paper requires precision.", expectedVerb: "cięcie", expectedNoun: "papieru", originalPhrase: "ciąć papier (acc sg)", hint: "ciąć → cięcie (-ąć → -ęcie); papier (acc) → papieru (gen)." },
+
+  // -----------------------------------------------------------------------
+  // COMMON VERBAL NOUNS (that double as everyday words)
+  // -----------------------------------------------------------------------
+  { id: "vn100", verbId: "mieszkac", template: `${V} w Warszawie jest drogie.`, english: "Living in Warsaw is expensive.", expectedVerb: "mieszkanie", originalPhrase: "mieszkać", hint: "mieszkać → mieszkanie (-ać → -anie). 'Mieszkanie' also means 'apartment'!" },
+  { id: "vn101", verbId: "spotkac", template: `${V} z przyjaciółmi było miłe.`, english: "Meeting with friends was nice.", expectedVerb: "spotkanie", originalPhrase: "spotkać", hint: "spotkać → spotkanie (-ać → -anie). 'Spotkanie' also means 'meeting/appointment'." },
+  { id: "vn102", verbId: "pytac", template: `${V} o drogę nie jest trudne.`, english: "Asking for directions is not difficult.", expectedVerb: "pytanie", originalPhrase: "pytać", hint: "pytać → pytanie (-ać → -anie). 'Pytanie' also means 'question'." },
+  { id: "vn103", verbId: "cwiczic", template: `Codzienne ${V} jest zdrowe.`, english: "Daily exercising is healthy.", expectedVerb: "ćwiczenie", originalPhrase: "ćwiczyć", hint: "ćwiczyć → ćwiczenie (-yć → -enie). 'Ćwiczenie' also means 'exercise'." },
+  { id: "vn104", verbId: "marzyc", template: `${V} o podróży jest przyjemne.`, english: "Dreaming about a trip is pleasant.", expectedVerb: "marzenie", originalPhrase: "marzyć", hint: "marzyć → marzenie (-yć → -enie). 'Marzenie' also means 'dream/wish'." },
+  { id: "vn105", verbId: "znaczyc", template: `${V} ${N} zależy od kontekstu.`, english: "The meaning of a word depends on context.", expectedVerb: "znaczenie", expectedNoun: "słowa", originalPhrase: "znaczyć słowo (acc sg)", hint: "znaczyć → znaczenie (-yć → -enie); słowo (acc) → słowa (gen). 'Znaczenie' also means 'meaning'." },
+  { id: "vn106", verbId: "tlumaczyc", template: `${V} ${N} trwa długo.`, english: "Translating books takes a long time.", expectedVerb: "tłumaczenie", expectedNoun: "książek", originalPhrase: "tłumaczyć książki (acc pl)", hint: "tłumaczyć → tłumaczenie (-yć → -enie); książki (acc pl) → książek (gen pl). 'Tłumaczenie' also means 'translation'." },
+  { id: "vn107", verbId: "opowiadac", template: `${V} ${N} to sztuka.`, english: "Telling stories is an art.", expectedVerb: "opowiadanie", expectedNoun: "historii", originalPhrase: "opowiadać historie (acc pl)", hint: "opowiadać → opowiadanie (-ać → -anie); historie (acc pl) → historii (gen pl). 'Opowiadanie' also means 'short story'." },
+  { id: "vn108", verbId: "cierpiec", template: `${V} uczy cierpliwości.`, english: "Suffering teaches patience.", expectedVerb: "cierpienie", originalPhrase: "cierpieć", hint: "cierpieć → cierpienie (-eć → -enie). 'Cierpienie' also means 'suffering' as a noun." },
+  { id: "vn109", verbId: "parkowac", template: `${V} w centrum jest trudne.`, english: "Parking downtown is difficult.", expectedVerb: "parkowanie", originalPhrase: "parkować", hint: "parkować → parkowanie (-ować → -owanie). 'Parkowanie' = parking." },
+  { id: "vn110", verbId: "latac", template: `${V} ${N} jest moim marzeniem.`, english: "Flying planes is my dream.", expectedVerb: "latanie", expectedNoun: "samolotami", originalPhrase: "latać samolotami (inst pl)", hint: "latać → latanie (-ać → -anie); 'samolotami' is instrumental and stays unchanged." },
+  { id: "vn111", verbId: "badac", template: `${V} ${N} jest fascynujące.`, english: "Researching history is fascinating.", expectedVerb: "badanie", expectedNoun: "historii", originalPhrase: "badać historię (acc sg)", hint: "badać → badanie (-ać → -anie); historię (acc) → historii (gen). 'Badanie' also means 'research/examination'." },
+  { id: "vn112", verbId: "zachowac", template: `Dobre ${V} jest ważne w szkole.`, english: "Good behavior is important in school.", expectedVerb: "zachowanie", originalPhrase: "zachować", hint: "zachować → zachowanie (-ować → -owanie). 'Zachowanie' also means 'behavior'." },
+  { id: "vn113", verbId: "wozic", template: `${V} ${N} wymaga cierpliwości.`, english: "Driving children requires patience.", expectedVerb: "wożenie", expectedNoun: "dzieci", originalPhrase: "wozić dzieci (acc pl)", hint: "wozić → wożenie (-ić → -enie, consonant z→ż); dzieci (acc pl) → dzieci (gen pl — same form)." },
+
+  // more -ąć → -ęcie sentences (verb only)
+  { id: "vn114", verbId: "wziac", template: `${V} prysznica trwa pięć minut.`, english: "Taking a shower takes five minutes.", expectedVerb: "wzięcie", originalPhrase: "wziąć", hint: "wziąć → wzięcie (-ąć → -ęcie). Vowel change: ą → ę." },
+  { id: "vn115", verbId: "przyjac", template: `${V} gości wymaga przygotowań.`, english: "Receiving guests requires preparations.", expectedVerb: "przyjęcie", originalPhrase: "przyjąć", hint: "przyjąć → przyjęcie (-ąć → -ęcie). 'Przyjęcie' also means 'party'!" },
+  { id: "vn116", verbId: "zaczac", template: `${V} jest najtrudniejsze.`, english: "Starting is the hardest part.", expectedVerb: "zaczęcie", originalPhrase: "zacząć", hint: "zacząć → zaczęcie (-ąć → -ęcie). Vowel change: ą → ę." },
 
   // -----------------------------------------------------------------------
   // "do + GENITIVE" — verbal noun in genitive after "do" (purpose)

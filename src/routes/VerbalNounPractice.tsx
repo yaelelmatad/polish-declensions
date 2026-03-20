@@ -81,6 +81,7 @@ function RulesReference() {
               <tr><td>-ić / -yć</td><td>-enie</td><td>mówić → mówienie</td></tr>
               <tr><td>-eć</td><td>-enie</td><td>myśleć → myślenie</td></tr>
               <tr><td>short verbs</td><td>-cie</td><td>pić → picie, myć → mycie</td></tr>
+              <tr><td>-ąć</td><td>-ęcie</td><td>wziąć → wzięcie, zdjąć → zdjęcie</td></tr>
             </tbody>
           </table>
           <p className="vn-case-rule">
