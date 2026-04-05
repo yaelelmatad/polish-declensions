@@ -877,4 +877,39 @@ export const sentences: Sentence[] = [
   { id: "sp76", wordId: "las", case: "acc", number: "singular", template: `Idę w ${BLANK}.`, hintExplanation: "Direction TO: 'w' + accusative (going into the forest)." },
   { id: "sp77", wordId: "las", case: "loc", number: "singular", template: `Jestem w ${BLANK}.`, hintExplanation: "Location AT: 'w' + locative (in the forest)." },
   { id: "sp78", wordId: "las", case: "gen", number: "singular", template: `Wracam z ${BLANK}.`, hintExplanation: "Coming FROM: 'z' + genitive (from the forest)." },
+
+  // Softened-consonant feminine nouns (gen pl = -y pattern)
+  // mysz
+  { id: "sf1", wordId: "mysz", case: "nom", number: "singular", template: `${BLANK} jest mała.`, hintExplanation: "Nominative singular." },
+  { id: "sf2", wordId: "mysz", case: "gen", number: "singular", template: `Boję się ${BLANK}.`, hintExplanation: "Genitive singular after 'boję się'." },
+  { id: "sf3", wordId: "mysz", case: "acc", number: "singular", template: `Widzę ${BLANK}.`, hintExplanation: "Accusative singular (= nominative for fem consonant-stem)." },
+  { id: "sf4", wordId: "mysz", case: "gen", number: "plural", template: `W domu nie ma ${BLANK}.`, hintExplanation: "Genitive plural: mysz → myszy (softened stem: -y ending, NOT zero)." },
+  { id: "sf5", wordId: "mysz", case: "nom", number: "plural", template: `${BLANK} uciekły.`, hintExplanation: "Nominative plural." },
+  { id: "sf6", wordId: "mysz", case: "inst", number: "singular", template: `Kot bawi się ${BLANK}.`, hintExplanation: "Instrumental singular." },
+  { id: "sf7", wordId: "mysz", case: "inst", number: "plural", template: `Kot bawi się ${BLANK}.`, hintExplanation: "Instrumental plural." },
+
+  // podróż
+  { id: "sf10", wordId: "podroz", case: "nom", number: "singular", template: `${BLANK} była wspaniała.`, hintExplanation: "Nominative singular." },
+  { id: "sf11", wordId: "podroz", case: "gen", number: "singular", template: `Wracam z ${BLANK}.`, hintExplanation: "Genitive singular after 'z' (from)." },
+  { id: "sf12", wordId: "podroz", case: "acc", number: "singular", template: `Planuję ${BLANK}.`, hintExplanation: "Accusative singular (= nominative for fem consonant-stem)." },
+  { id: "sf13", wordId: "podroz", case: "gen", number: "plural", template: `Dużo ${BLANK}.`, hintExplanation: "Genitive plural: podróż → podróży (softened stem: -y ending)." },
+  { id: "sf14", wordId: "podroz", case: "loc", number: "singular", template: `Marzę o ${BLANK}.`, hintExplanation: "Locative singular after 'o' (about)." },
+  { id: "sf15", wordId: "podroz", case: "nom", number: "plural", template: `${BLANK} uczą cierpliwości.`, hintExplanation: "Nominative plural." },
+  { id: "sf16", wordId: "podroz", case: "dat", number: "singular", template: `Dziękuję tej ${BLANK}.`, hintExplanation: "Dative singular." },
+
+  // twarz
+  { id: "sf20", wordId: "twarz", case: "nom", number: "singular", template: `${BLANK} jest piękna.`, hintExplanation: "Nominative singular." },
+  { id: "sf21", wordId: "twarz", case: "gen", number: "singular", template: `Nie widzę ${BLANK}.`, hintExplanation: "Genitive singular after negation." },
+  { id: "sf22", wordId: "twarz", case: "acc", number: "singular", template: `Myję ${BLANK}.`, hintExplanation: "Accusative singular (= nominative for fem consonant-stem)." },
+  { id: "sf23", wordId: "twarz", case: "gen", number: "plural", template: `Wiele ${BLANK}.`, hintExplanation: "Genitive plural: twarz → twarzy (softened stem: -y ending)." },
+  { id: "sf24", wordId: "twarz", case: "acc", number: "singular", template: `Krem na ${BLANK}.`, hintExplanation: "Accusative after 'na' (for the face)." },
+  { id: "sf25", wordId: "twarz", case: "loc", number: "singular", template: `Na ${BLANK} jest uśmiech.`, hintExplanation: "Locative after 'na' (on the face)." },
+
+  // miłość
+  { id: "sf30", wordId: "milosc", case: "nom", number: "singular", template: `${BLANK} jest piękna.`, hintExplanation: "Nominative singular." },
+  { id: "sf31", wordId: "milosc", case: "gen", number: "singular", template: `Szukam ${BLANK}.`, hintExplanation: "Genitive singular after 'szukam'." },
+  { id: "sf32", wordId: "milosc", case: "acc", number: "singular", template: `Czuję ${BLANK}.`, hintExplanation: "Accusative singular (= nominative for fem consonant-stem)." },
+  { id: "sf33", wordId: "milosc", case: "inst", number: "singular", template: `Żyję z ${BLANK}.`, hintExplanation: "Instrumental singular after 'z' (with)." },
+  { id: "sf34", wordId: "milosc", case: "loc", number: "singular", template: `Mówię o ${BLANK}.`, hintExplanation: "Locative singular after 'o' (about)." },
+  { id: "sf35", wordId: "milosc", case: "gen", number: "plural", template: `Wiele ${BLANK}.`, hintExplanation: "Genitive plural: miłość → miłości (soft stem ć: -i ending)." },
 ];

@@ -272,7 +272,7 @@ export const words: Word[] = [
     gender: "m",
     animate: true,
     virile: true,
-    stemType: "soft",
+    stemType: "softened",
     forms: {
       singular: {
         nom: "chłopiec",
@@ -417,7 +417,7 @@ export const words: Word[] = [
     gender: "m",
     animate: true,
     virile: true,
-    stemType: "soft",
+    stemType: "softened",
     forms: {
       singular: {
         nom: "ojciec",
@@ -502,7 +502,7 @@ export const words: Word[] = [
     english: "street",
     gender: "f",
     virile: false,
-    stemType: "soft",
+    stemType: "softened",
     forms: {
       singular: {
         nom: "ulica",
@@ -530,7 +530,7 @@ export const words: Word[] = [
     english: "school",
     gender: "f",
     virile: false,
-    stemType: "softened",
+    stemType: "hard",
     forms: {
       singular: {
         nom: "szkoła",
@@ -670,7 +670,7 @@ export const words: Word[] = [
     english: "work / job",
     gender: "f",
     virile: false,
-    stemType: "hard",
+    stemType: "softened",
     forms: {
       singular: {
         nom: "praca",
@@ -698,7 +698,7 @@ export const words: Word[] = [
     english: "thing",
     gender: "f",
     virile: false,
-    stemType: "soft",
+    stemType: "softened",
     forms: {
       singular: {
         nom: "rzecz",
@@ -726,7 +726,7 @@ export const words: Word[] = [
     english: "night",
     gender: "f",
     virile: false,
-    stemType: "soft",
+    stemType: "softened",
     forms: {
       singular: {
         nom: "noc",
@@ -754,7 +754,7 @@ export const words: Word[] = [
     english: "book",
     gender: "f",
     virile: false,
-    stemType: "soft",
+    stemType: "hard",
     forms: {
       singular: {
         nom: "książka",
@@ -895,7 +895,7 @@ export const words: Word[] = [
     english: "sea",
     gender: "n",
     virile: false,
-    stemType: "soft",
+    stemType: "softened",
     forms: {
       singular: {
         nom: "morze",
@@ -1097,7 +1097,7 @@ export const words: Word[] = [
     gender: "m",
     animate: true,
     virile: true,
-    stemType: "soft",
+    stemType: "softened",
     forms: {
       singular: {
         nom: "lekarz",
@@ -1155,7 +1155,7 @@ export const words: Word[] = [
     gender: "m",
     animate: true,
     virile: true,
-    stemType: "soft",
+    stemType: "softened",
     forms: {
       singular: {
         nom: "mąż",
@@ -1358,7 +1358,7 @@ export const words: Word[] = [
     gender: "m",
     animate: false,
     virile: false,
-    stemType: "soft",
+    stemType: "softened",
     forms: {
       singular: {
         nom: "miesiąc",
@@ -1387,7 +1387,7 @@ export const words: Word[] = [
     gender: "m",
     animate: false,
     virile: false,
-    stemType: "softened",
+    stemType: "hard",
     forms: {
       singular: {
         nom: "język",
@@ -1584,7 +1584,7 @@ loc: "obiadzie",
     english: "field",
     gender: "n",
     virile: false,
-    stemType: "hard",
+    stemType: "soft",
     forms: {
       singular: {
         nom: "pole",
@@ -1612,7 +1612,7 @@ loc: "obiadzie",
     english: "flat / apartment",
     gender: "n",
     virile: false,
-    stemType: "hard",
+    stemType: "soft",
     forms: {
       singular: {
         nom: "mieszkanie",
@@ -1726,7 +1726,7 @@ loc: "obiadzie",
     gender: "m",
     animate: true,
     virile: true,
-    stemType: "softened",
+    stemType: "hard",
     forms: {
       singular: {
         nom: "człowiek",
@@ -1786,7 +1786,7 @@ loc: "obiadzie",
     gender: "m",
     animate: false,
     virile: false,
-    stemType: "soft",
+    stemType: "softened",
     forms: {
       singular: {
         nom: "nóż",
@@ -1816,7 +1816,7 @@ loc: "obiadzie",
     gender: "m",
     animate: true,
     virile: true,
-    stemType: "softened",
+    stemType: "hard",
     forms: {
       singular: {
         nom: "Bóg",
@@ -2009,6 +2009,119 @@ loc: "obiadzie",
         inst: "lotniskami",
         loc: "lotniskach",
         voc: "lotniska",
+      },
+    },
+  },
+  // Softened-consonant feminines (gen pl with -y, not zero ending)
+  {
+    id: "mysz",
+    nominative: "mysz",
+    english: "mouse",
+    gender: "f",
+    virile: false,
+    stemType: "softened",
+    forms: {
+      singular: {
+        nom: "mysz",
+        gen: "myszy",
+        dat: "myszy",
+        acc: "mysz",
+        inst: "myszą",
+        loc: "myszy",
+        voc: "myszy",
+      },
+      plural: {
+        nom: "myszy",
+        gen: "myszy",
+        dat: "myszom",
+        acc: "myszy",
+        inst: "myszami",
+        loc: "myszach",
+        voc: "myszy",
+      },
+    },
+  },
+  {
+    id: "podroz",
+    nominative: "podróż",
+    english: "journey / trip",
+    gender: "f",
+    virile: false,
+    stemType: "softened",
+    forms: {
+      singular: {
+        nom: "podróż",
+        gen: "podróży",
+        dat: "podróży",
+        acc: "podróż",
+        inst: "podróżą",
+        loc: "podróży",
+        voc: "podróży",
+      },
+      plural: {
+        nom: "podróże",
+        gen: "podróży",
+        dat: "podróżom",
+        acc: "podróże",
+        inst: "podróżami",
+        loc: "podróżach",
+        voc: "podróże",
+      },
+    },
+  },
+  {
+    id: "twarz",
+    nominative: "twarz",
+    english: "face",
+    gender: "f",
+    virile: false,
+    stemType: "softened",
+    forms: {
+      singular: {
+        nom: "twarz",
+        gen: "twarzy",
+        dat: "twarzy",
+        acc: "twarz",
+        inst: "twarzą",
+        loc: "twarzy",
+        voc: "twarzy",
+      },
+      plural: {
+        nom: "twarze",
+        gen: "twarzy",
+        dat: "twarzom",
+        acc: "twarze",
+        inst: "twarzami",
+        loc: "twarzach",
+        voc: "twarze",
+      },
+    },
+  },
+  {
+    id: "milosc",
+    nominative: "miłość",
+    english: "love",
+    gender: "f",
+    virile: false,
+    stemType: "soft",
+    forms: {
+      singular: {
+        nom: "miłość",
+        gen: "miłości",
+        dat: "miłości",
+        acc: "miłość",
+        inst: "miłością",
+        loc: "miłości",
+        voc: "miłości",
+      },
+      plural: {
+        nom: "miłości",
+        gen: "miłości",
+        dat: "miłościom",
+        acc: "miłości",
+        inst: "miłościami",
+        loc: "miłościach",
+        voc: "miłości",
       },
     },
   },
