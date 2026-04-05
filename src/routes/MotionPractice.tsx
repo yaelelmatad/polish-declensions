@@ -62,7 +62,6 @@ export default function MotionPractice() {
   const [sentence, setSentence] = useState<MotionSentence | null>(null);
   const [answer, setAnswer] = useState("");
   const [result, setResult] = useState<CheckResult | null>(null);
-  const [hintShown, setHintShown] = useState(false);
   const [refOpen, setRefOpen] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -92,7 +91,6 @@ export default function MotionPractice() {
     setSentence(picked);
     setAnswer("");
     setResult(null);
-    setHintShown(false);
     setTimeout(() => inputRef.current?.focus(), 0);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [queue, qIdx]);
@@ -268,20 +266,8 @@ export default function MotionPractice() {
                   Submit
                 </button>
               </div>
-              {!hintShown && (
-                <button
-                  type="button"
-                  className="hint-btn"
-                  onClick={() => setHintShown(true)}
-                >
-                  Show hint
-                </button>
-              )}
-              {hintShown && (
-                <div className="hint-box">
-                  <p>{sentence.hint}</p>
-                </div>
-              )}
+
+
             </>
           ) : (
             <div className="feedback">
@@ -299,8 +285,8 @@ export default function MotionPractice() {
                 </p>
               ) : (
                 <p className="incorrect">
-                  <strong>Incorrect.</strong> Correct form:{" "}
-                  <strong>{sentence.expected}</strong>
+                  <strong>Incorrect.</strong> Your answer: <em>{answer}</em>.
+                  Correct form: <strong>{sentence.expected}</strong>
                   {sentence.alternates && sentence.alternates.length > 0 && (
                     <>
                       {" "}(also accepted:{" "}
@@ -309,7 +295,7 @@ export default function MotionPractice() {
                   )}
                 </p>
               )}
-              {result.missedDiacritics.length > 0 && result.correct && (
+              {result.missedDiacritics.length > 0 && (
                 <p className="diacritics-feedback">
                   Watch your diacritics:{" "}
                   {result.missedDiacritics.map((d) => d.char).join(", ")}

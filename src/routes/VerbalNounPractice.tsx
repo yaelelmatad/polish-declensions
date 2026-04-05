@@ -101,7 +101,6 @@ export default function VerbalNounPractice() {
   const [verbAnswer, setVerbAnswer] = useState("");
   const [nounAnswer, setNounAnswer] = useState("");
   const [result, setResult] = useState<VNResult | null>(null);
-  const [hintShown, setHintShown] = useState(false);
   const verbInputRef = useRef<HTMLInputElement>(null);
   const nounInputRef = useRef<HTMLInputElement>(null);
 
@@ -132,7 +131,6 @@ export default function VerbalNounPractice() {
     setVerbAnswer("");
     setNounAnswer("");
     setResult(null);
-    setHintShown(false);
     setTimeout(() => verbInputRef.current?.focus(), 0);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [queue, qIdx]);
@@ -278,20 +276,8 @@ export default function VerbalNounPractice() {
                 Submit
               </button>
             </div>
-            {!hintShown && (
-              <button
-                type="button"
-                className="hint-btn"
-                onClick={() => setHintShown(true)}
-              >
-                Show hint
-              </button>
-            )}
-            {hintShown && (
-              <div className="hint-box">
-                <p>{sentence.hint}</p>
-              </div>
-            )}
+
+
           </>
         ) : (
           <div className="feedback">
